@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <div class="container" style="display: flex;
+                                 justify-content: center;
+                                 padding-top: 50px;">
+        <form method="post">
+            {% csrf_token %}
+            <textarea name="input-text" id="input-text" cols="80" rows="15"oninput="enableButton()"></textarea> <br>
+            
+            <button class="btn " type="submit" id="myButton" disabled>Submit </button>
+        </form> 
+    </div>
+    <script>
+        function enableButton() {
+            var inputField = document.getElementById("input-text");
+            var myButton = document.getElementById("myButton");
+            if (inputField.value.length > 0) {
+                myButton.removeAttribute('disabled')
+                myButton.classList.add('btn-outline-success')
+            } else {
+                myButton.setAttribute('disabled')
+            }
+        }
+
+    </script>
+{% endblock %}
+    

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    
+    th, td {
+      text-align: left;
+      padding: 8px;
+    }
+    
+    th {
+      background-color: #ddd;
+      font-weight: bold;
+    }
+    
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    </style>
+    
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Verbs</th>
+          <th>Nouns</th>
+          <th>Adjectives</th>
+          <th>E-mail</th>
+          <th>phone-number</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          {% for key, value in values.items %}
+            <td>{{ key }} : {{ value|length }} </td>
+          {% endfor %}
+        </tr>
+        <tr>
+            {% for key, value in values.items %}
+                
+                    <td>
+                        <ul>
+                            {% for item in value %}
+                                <li>{{ item }}</li>
+                            {% endfor %}
+                        </ul> 
+                    </td>
+               
+            {% endfor %}
+        </tr>
+      </tbody>
+    </table>
+    
+{% endblock %}
+        
